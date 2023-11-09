@@ -1,27 +1,54 @@
-# TaskSupervisionApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.9.
+# Task Supervision
 
-## Development server [https://coding-assignment-r1k2.vercel.app/dashboard](https://coding-assignment-r1k2.vercel.app/)
+## Production Server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Production Server Link: ([https://your-production-server-url/](https://coding-assignment-sand.vercel.app/))
+ (requires a bit of time for the first visit cause of render deployment)
+## Project Presentation
 
-## Code scaffolding
+Project Presentation Link: ([https://link-to-your-project-presentation/](https://drive.google.com/file/d/10rrEeheK-6mxHgIjqBwaiaME_-ercN5B/view?usp=sharing))
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Already Registered Account
+Email: vinay@gmail.com | even@gmail.com 
+Password: 1234 (use these for login or create one) 
 
-## Build
+## Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **User Registration:** Allow users to register for an account.
+- **User Login:** Provide a secure login mechanism.
+- **JWT Authentication:** Ensure secure communication using JSON Web Tokens.
+- **Task Management:** Each user has a dedicated task space.
+- **Deletion:** Ability to delete tasks or other relevant entities.
+- **Updation:** Update and modify tasks or other relevant entities.
+- **Logout:** Securely log out users.
 
-## Running unit tests
+## Tech Stacks
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **Frontend:** Angular
+- **Backend:** Java Spring Boot
+- **Database:** PostgreSQL, MySQL
 
-## Running end-to-end tests
+## Deployment
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- **Frontend Deployment:** [Vercel](https://vercel.com/)
+- **Backend Deployment:** [Render](https://render.com/)
 
-## Further help
+## Getting Started
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Prerequisites
+
+- [Anguar]() for the frontend.
+- [Java](https://www.java.com/) for the backend.
+- [PostgreSQL](https://www.postgresql.org/) or [MySQL](https://www.mysql.com/) database.
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yourusername/yourproject.git
+   cd yourproject
+   cd frontend
+   npm install
+   ng serve
+
