@@ -1,0 +1,35 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.filter {
+    margin-bottom: 20px; /* Add some margin for spacing */
+    text-align: center;
+  }
+  
+  .filter-select {
+    padding: 8px 16px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    outline: none; /* Remove the outline when focused */
+    cursor: pointer; /* Show a pointer cursor on hover */
+  }
+  
+  /* Style the select dropdown arrow */
+  .filter-select::-ms-expand {
+    display: none; /* Hide the default arrow on Edge and IE */
+  }
+  
+  .filter-select::after {
+    content: '▼'; /* Add a custom dropdown arrow using a Unicode character */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* Allow click-through to the select element */
+  }
+
+  

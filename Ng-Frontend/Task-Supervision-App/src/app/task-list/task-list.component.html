@@ -1,0 +1,41 @@
+<app-dashboard></app-dashboard>
+<div class="p-4 sm:ml-64">
+    <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+
+        <div class="filter">
+            <label for="statusFilter">Filter by Status:</label>
+            <select id="statusFilter" [(ngModel)]="selectedStatus" (change)="filterTasks()" class="filter-select">
+              <option value="all">All</option>
+              <option value="Pending">Pending</option>
+              <option value="Completed">Completed</option>
+              <option value="Overdue">Overdue</option>
+            </select>
+          </div>
+          
+        <div *ngFor="let task of filteredTasks"
+            class="w-full my-4 p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+            <h5 class="mb-2 text-3xl font-bold text-gray-900 dark:text-white">{{task.taskTitle}}</h5>
+            <p class="mb-2 text-base text-gray-500 sm:text-lg dark:text-gray-400">{{task.taskDesc}}</p>
+            <p class="mb-2 text-base text-gray-500 sm:text-lg dark:text-gray-400">Status: {{task.status}}</p>
+            <p class="mb-2 text-base text-gray-500 sm:text-lg dark:text-gray-400">Created At: {{task.createdAt}}</p>
+            <button type="submit" (click)="deleteTask(task.id)"
+                class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
+                style="margin-left: 5px;">
+                Delete Task
+            </button>
+            
+            <button type="submit" (click)="markTaskComplete(task.id)"
+                class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
+                style="margin-left: 5px;">
+                Complete Task
+            </button>
+            <button type="submit" [routerLink]="'/update-task/'+task.id"
+                class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
+                style="margin-left: 5px;">
+                Update Task
+            </button>
+        </div>
+
+
+    </div>
+</div>
