@@ -13,6 +13,9 @@ import { TaskDetailsComponent } from './task-details/task-details.component';
 import { UpdateTaskComponent } from './update-task/update-task.component';
 import { UserRegisterComponent } from './users/user-register/user-register.component';
 import { UserLoginComponent } from './users/user-login/user-login.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { ListUserComponent } from './list-user/list-user.component';
+import { ViewUserComponent } from './list-user/view-user/view-user.component';
 
 @NgModule({
   declarations: [
@@ -23,13 +26,16 @@ import { UserLoginComponent } from './users/user-login/user-login.component';
     TaskDetailsComponent,
     UpdateTaskComponent,
     UserRegisterComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    ListUserComponent,
+    ViewUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

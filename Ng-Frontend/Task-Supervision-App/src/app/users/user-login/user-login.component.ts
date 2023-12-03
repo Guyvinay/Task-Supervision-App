@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { LoggedInProfile, LoginCreds } from 'src/app/profile';
 import { ProfileService } from 'src/app/profile.service';
 import Swal from 'sweetalert2';
@@ -31,6 +32,7 @@ export class UserLoginComponent implements OnInit {
   constructor(
     private profileService: ProfileService,
     private router : Router,
+    private spinner: NgxSpinnerService
   ){}
 
 
@@ -40,11 +42,11 @@ export class UserLoginComponent implements OnInit {
 
 
   loginUser(){
-
+    this.spinner.show();
     this.profileService.loginUser(this.loginCreds)
                .subscribe(
                 (response)=>{
-                  
+                  this.spinner.hide();
                   this.loggedProfileData = response;
                   this.profileService.setLoggedInProfile(this.loggedProfileData);
                   localStorage.setItem('loggedInUserData',JSON.stringify(this.loggedProfileData));
@@ -63,6 +65,7 @@ export class UserLoginComponent implements OnInit {
                   });
                 },
                 (error)=>{
+                  this.spinner.hide();
                   console.log(error);
                   Swal.fire({
                     icon: 'error', // Set the alert icon (success, error, warning, info, etc.)
@@ -71,6 +74,10 @@ export class UserLoginComponent implements OnInit {
                     showConfirmButton: false, // Automatically close the alert after a short delay
                     timer: 1500, // Adjust the duration (in milliseconds) for the alert to disappear
                   });
+                },
+                () => {
+                  // Handle login error
+                  this.spinner.hide(); // Hide the spinner on error
                 }
                )
     

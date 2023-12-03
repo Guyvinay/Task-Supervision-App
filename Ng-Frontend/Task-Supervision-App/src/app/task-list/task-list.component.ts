@@ -4,6 +4,7 @@ import { TaskService } from '../task.service';
 import { response } from 'express';
 import { error } from 'console';
 import Swal from 'sweetalert2';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-task-list',
@@ -16,7 +17,10 @@ export class TaskListComponent implements OnInit {
   selectedStatus:string='all';
   filteredTasks:Task[] = [];
 
-  constructor(private taskService: TaskService){}
+  constructor(
+    private taskService: TaskService,
+    private spinner: NgxSpinnerService
+    ){}
 
   ngOnInit(): void {
 
@@ -31,14 +35,17 @@ export class TaskListComponent implements OnInit {
     //                     console.log(error);
     //                   }
     //                  );
+    this.spinner.show();
     this.taskService.getAllTasksByUsers()
                      .subscribe(
                       (response)=>{
                         this.allTasks = response.data;
                         console.log(this.allTasks);
                         this.filteredTasks = this.allTasks;
+                        this.spinner.hide(); 
                       },
                       (error)=>{
+                        this.spinner.hide(); 
                         console.log(error);
                       }
                      );
@@ -51,9 +58,6 @@ export class TaskListComponent implements OnInit {
         console.log(response);
 
         const index = this.allTasks.findIndex((task)=>task.id===id);
-        if(index!=-1){
-          this.allTasks.splice(index, 1);
-        }
         Swal.fire({
           icon: 'success', // Set the alert icon (success, error, warning, info, etc.)
           title: 'Task Deleted',
@@ -61,6 +65,9 @@ export class TaskListComponent implements OnInit {
           showConfirmButton: false, // Automatically close the alert after a short delay
           timer: 1500, // Adjust the duration (in milliseconds) for the alert to disappear
         });
+        if(index!=-1){
+          this.allTasks.splice(index, 1);
+        }
 
       },
       (error)=>{

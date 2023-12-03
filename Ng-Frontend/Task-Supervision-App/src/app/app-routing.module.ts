@@ -7,6 +7,8 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { UpdateTaskComponent } from './update-task/update-task.component';
 import { UserLoginComponent } from './users/user-login/user-login.component';
 import { UserRegisterComponent } from './users/user-register/user-register.component';
+import { ListUserComponent } from './list-user/list-user.component';
+import { ViewUserComponent } from './list-user/view-user/view-user.component';
 
 const routes: Routes = [
   {path:'dashboard', component:DashboardComponent},
@@ -16,6 +18,8 @@ const routes: Routes = [
   {path:'update-task/:id', component:UpdateTaskComponent},
   {path:'login', component:UserLoginComponent},
   {path:'register', component:UserRegisterComponent},
+  {path:'users', component:ListUserComponent},
+  {path:'view-users/:id', component:ViewUserComponent},
   {path:'', redirectTo:'/login',pathMatch:'full'}
 ];
 

@@ -10,7 +10,7 @@ export class ProfileService implements OnInit {
 
 
 
-  // private baseUrl = 'http://localhost:8888/api/profile';
+  // private baseUrl = 'http://localhost:9898/api/profile';
   private baseUrl = 'https://task-supervision-app.onrender.com/api/profile';
 
 
@@ -48,6 +48,12 @@ export class ProfileService implements OnInit {
       profilePic: profileData.profile_picture
     };
     return this.http.post<any>(this.baseUrl+"/createProfile",registerData);
+  }
+
+  getAllProfiles(): Observable<any> {
+
+
+    return this.http.get<any>(`${this.baseUrl}/getAllProfiles`);
   }
 
 
