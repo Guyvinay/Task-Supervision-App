@@ -9,8 +9,8 @@ export class WebSocketService {
 
   connect(email: string): void {
     // Update the URL with your WebSocket server endpoint
-    // const url = `ws://localhost:9898/chat/${email}`;
-    const url = `wss://task-supervision-app.onrender.com/${email}`;
+    // const url = `ws://localhost:8888/chat/${email}`;
+    const url = `wss://task-supervision-app.onrender.com/chat/${email}`;
     this.socket$ = webSocket(url);
   }
 
