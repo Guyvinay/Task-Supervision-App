@@ -3,15 +3,15 @@
     <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
 
         <div *ngFor="let user of allAvailableUsers"
-            class="w-full my-4 p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 flex gap-5"
+            class="w-full my-4 p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 flex gap-8"
             [routerLink]="'/view-users/'+user.id"
             >
             <div>
-                <img class="w-20 h-20 rounded-full" [src]="user.profilePic" alt="user photo">
+                <img class="w-28 h-28 rounded-full" [src]="user.profilePic" alt="user photo">
             </div>
             <div>
             <h5 class="mb-2 text-3xl font-bold text-gray-900 dark:text-white">{{user.name}}</h5>
-            <h6 class="mb-2 text-3xl font-bold text-gray-900 dark:text-white">{{user.email}}</h6>
+            <h6 class="mb-2 text-2xl font-bold text-gray-900 dark:text-white">{{user.email}}</h6>
             </div>
             
         </div>
