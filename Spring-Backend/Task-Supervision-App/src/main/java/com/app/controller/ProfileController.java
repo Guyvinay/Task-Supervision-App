@@ -53,6 +53,12 @@ public class ProfileController {
 		return ResponseEntity.ok(map);
 	}
 	
+	@GetMapping(value = "/getAllProfiles")
+	public ResponseEntity<?> getAllProfiles(){
+		Map<String,Object> map = profileService.getAllProfiles();
+		return ResponseEntity.ok(map);
+	}
+	
 	@PostMapping(value = "/postSignIn")
 	public ResponseEntity<?> postSignInRequest(@RequestBody SignInRequest request){
 		

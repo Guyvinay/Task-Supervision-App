@@ -53,7 +53,8 @@ public class SecurityConfiguration {
 		        	auth
 		        	.requestMatchers(HttpMethod.POST,"/api/profile/createProfile").permitAll()
 		        	.requestMatchers(HttpMethod.POST,"/api/profile/postSignIn").permitAll()
-//		        	.requestMatchers("/api/tasks*/**").permitAll()
+		        	.requestMatchers("/api/profile/getAllProfiles").permitAll()
+		        	.requestMatchers("/chat/{userEmail}*/**").permitAll()
 		        	.requestMatchers("/swagger-ui*/**","/v3/api-docs/**").permitAll()
 		        	  .anyRequest()
 				       .authenticated();

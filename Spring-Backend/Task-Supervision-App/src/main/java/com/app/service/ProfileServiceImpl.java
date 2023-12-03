@@ -84,7 +84,7 @@ public class ProfileServiceImpl implements ProfileService {
 			map.put("status", "NOT-FOUND");
 		} else {
 			map.put("users", list);
-			map.put("status", "OK");
+			map.put("total", list.size());
 		}
 		return map;
 	}
