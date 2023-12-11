@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Router } from '@angular/router';
 import { RegisterProfile } from 'src/app/profile';
 import { ProfileService } from 'src/app/profile.service';
@@ -15,6 +16,7 @@ export class UserRegisterComponent {
   constructor(
     private profileService: ProfileService,
     private router : Router,
+    private fireStorage:AngularFireStorage
   ){}
 
   registerProfile : RegisterProfile={
@@ -23,9 +25,19 @@ export class UserRegisterComponent {
     password: '',
     profile_picture: ''
   }
+  profile_pic:string='';
+
+  async onFileChange(event:any){
+    const file = event.target.files[0]
+    if(file){
+      const path = `yt/${file.name}`
+      const uploadTask =await this.fireStorage.upload(path,file)
+      const url = await uploadTask.ref.getDownloadURL()
+      this.registerProfile.profile_picture = url;
+    }
+  }
 
   onSubmitRegisterUser(){
-
     this.profileService.registerProfile(this.registerProfile)
                           .subscribe(
                             (response)=>{

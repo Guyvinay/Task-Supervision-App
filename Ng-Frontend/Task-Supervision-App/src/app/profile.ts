@@ -10,7 +10,7 @@ export interface RegisterProfile {
     name:'',
     email:'',
     password:'',
-    profile_picture:'',
+    profile_picture:string,
 }
 
 export interface LoggedInProfile {

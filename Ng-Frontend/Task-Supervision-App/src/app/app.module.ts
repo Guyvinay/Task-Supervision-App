@@ -11,11 +11,14 @@ import { TaskFormComponent } from './task-form/task-form.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 import { UpdateTaskComponent } from './update-task/update-task.component';
-import { UserRegisterComponent } from './users/user-register/user-register.component';
 import { UserLoginComponent } from './users/user-login/user-login.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ListUserComponent } from './list-user/list-user.component';
 import { ViewUserComponent } from './list-user/view-user/view-user.component';
+import { environment } from 'src/environments/environment';
+import {AngularFireModule} from '@angular/fire/compat'
+import {AngularFireStorageModule} from '@angular/fire/compat/storage'
+import { UserRegisterComponent } from './users/user-register/user-register.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +28,8 @@ import { ViewUserComponent } from './list-user/view-user/view-user.component';
     TaskListComponent,
     TaskDetailsComponent,
     UpdateTaskComponent,
-    UserRegisterComponent,
     UserLoginComponent,
+    UserRegisterComponent,
     ListUserComponent,
     ViewUserComponent
   ],
@@ -36,6 +39,8 @@ import { ViewUserComponent } from './list-user/view-user/view-user.component';
     FormsModule,
     HttpClientModule,
     NgxSpinnerModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
