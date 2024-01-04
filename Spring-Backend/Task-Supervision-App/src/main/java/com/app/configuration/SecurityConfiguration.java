@@ -1,5 +1,6 @@
 package com.app.configuration;
 
+import java.security.Key;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -20,6 +21,8 @@ import org.springframework.web.cors.CorsConfigurationSource;
 
 import com.app.jwtService.JwtTokenValidatorFilter;
 
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.http.HttpServletRequest;
 
 
@@ -77,6 +80,11 @@ public class SecurityConfiguration {
 	@Bean
 	AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
 		return authenticationConfiguration.getAuthenticationManager();
+	}
+	
+	@Bean
+	Key jwtKey() {
+		return Keys.secretKeyFor(SignatureAlgorithm.HS256);
 	}
 	
 	
