@@ -28,7 +28,6 @@ public class JwtTokenValidatorFilter extends OncePerRequestFilter {
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
 		String jwtToken = request.getHeader(JwtVars.JWT_HEADER);
-		log.info(jwtToken);
 		if(jwtToken!=null){
 			try {
 				
@@ -45,7 +44,6 @@ public class JwtTokenValidatorFilter extends OncePerRequestFilter {
 				
 				String username = String.valueOf(claims.get("username"));
 				String authorities = (String)claims.get("authorities");
-				log.info(authorities);
 				List<GrantedAuthority> authorityList = AuthorityUtils.commaSeparatedStringToAuthorityList(authorities);
 				Authentication authentication = new UsernamePasswordAuthenticationToken(username,null, authorityList);
 				

@@ -25,11 +25,11 @@ public class TaskServiceImpl implements TaskService {
 	
 	
 	@Override
-	public Task createTask(Task task) {
+	public Task createTask(Task task, Long id) {
 		if(task==null) throw new TaskNotFoundException("Task Cannot be null");
 		
 		Profile profile = profileRepository
-				            .findById(task.getProfileId())
+				            .findById(id)
 	                            .orElseThrow(()->new TaskNotFoundException("Task Cannot be null"));
 		
 		task.setProfile(profile);

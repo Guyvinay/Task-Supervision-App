@@ -6,6 +6,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,13 +48,18 @@ public class TaskController {
 	@Autowired
 	private TaskService taskService;
 	
-	@PostMapping(value = "/createTask")
-	public ResponseEntity<Task> createTask(@Valid @RequestBody Task task) {
-		System.out.println("Hii");
-		return new ResponseEntity<Task>(taskService.createTask(task),HttpStatus.ACCEPTED);
+	@PostMapping(value = "/createTask/{userId}")
+	public ResponseEntity<Task> createTask(@Valid @RequestBody Task task, @PathVariable("userId") Long id) {
+		return new ResponseEntity<Task>(taskService.createTask(task, id),HttpStatus.ACCEPTED);
 	}
 	@GetMapping(value = "/getAllTasks")
 	public ResponseEntity<Map<String, List<Task>>> getAllTasks(){
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String username = authentication.getName(); // Get the username (from JWT subject)
+
+		// Log the username or other user details
+		System.out.println("Username: " + username);
+
 		return new ResponseEntity<Map<String, List<Task>>>(taskService.getAllTasks(),HttpStatus.ACCEPTED);
 	}
 	

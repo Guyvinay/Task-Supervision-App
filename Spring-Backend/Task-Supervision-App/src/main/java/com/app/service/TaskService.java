@@ -7,7 +7,7 @@ import com.app.model.Task;
 
 public interface TaskService {
 
-	public Task createTask(Task task);
+	public Task createTask(Task task, Long id);
 	public Map<String, List<Task>> getAllTasks();
 	public Map<String, Task> getTaskById(Long id);
 	public Task getTaskByTitle(String title);

@@ -27,9 +27,7 @@ public class Task {
 	private String status;
 	private LocalDateTime createdAt=LocalDateTime.now();
 	
-	@Transient
-	private Long profileId;
-	
+
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "profile_id")
